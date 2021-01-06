@@ -21,4 +21,22 @@ public class Node{
   public Node getPrev(){
     return prev;
   }
+  
+  public String setData(String value){
+    String temp = data;
+    data = value;
+    return temp;
+  }
+  
+  public Node setNext(Node value){
+    Node temp = next;
+    next = value;
+    return temp;
+  }
+  
+  public Node setPrev(Node value){
+    Node temp = prev;
+    prev = value;
+    return temp;
+  }
 }
