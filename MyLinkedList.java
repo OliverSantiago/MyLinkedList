@@ -114,5 +114,14 @@ public class MyLinkedList{
     return answer;
   }
   
+  public String toStringReversed(){
+    String answer = "";
+    Node current = start;
+    for (int i = 0; i < size; i++){
+      answer=current.getData()+", "+answer;
+      current = current.getNext();
+    }
+    return answer.substring(0,answer.length()-2);
+  }
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
