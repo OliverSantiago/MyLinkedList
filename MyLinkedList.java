@@ -25,38 +25,61 @@ public class MyLinkedList{
     return true;
   }
   
-  public boolean add(int index, String value){
+  public void add(int index, String value){
     Node n = new Node(value);
     if (index<0||index>size){
       throw new IndexOutOfBoundsException();
     }
     if (index == size){
-      return add(value);
+      add(value);
     }else{
       if (index == 0){
         n.setNext(start);
         start.setPrev(n);
         start = n;
         size++;
-        return true;
       }else{
         
       }
     }
-    return true;
   }
   
   // private Node helper(int index){
-  //   Node n = new Node(0);
   //   int answer = 0; 
   //   if (index<0||index>size){
   //     throw new IndexOutOfBoundsException();
   //   }
-  //   //for ()
-  //   return n;
+  //   Node current = start;
+  //   //String answer = "";
+  //   for (int i = 0; i < size; i++){
+  //     //answer = current.getData();
+  //     current = current.getNext();
+  //     if (i == index){
+  //       return current;
+  //     }
+  //   }
+  //   return current;
   // }
   
-  // public String get(int index);
+  // public Node helper2(int index){
+  //   return(helper(index));
+  // }
+  
+  
+  public String get(int index){
+    if (index<0||index>size){
+      throw new IndexOutOfBoundsException();
+    }
+    Node current = start;
+    for (int i = 0; i < size; i++){
+      if (i == index){
+        return current.getData();
+      }
+      current = current.getNext();
+    }
+    return current.getData();
+  }
+  
   // public String set(int index, String value);
   
   public String toString(){
