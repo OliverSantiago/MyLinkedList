@@ -39,31 +39,35 @@ public class MyLinkedList{
         start = n;
         size++;
       }else{
-        
+        //System.out.println(toString());
+        n.setPrev(helper(index).getPrev());
+        n.setNext(helper(index));
+        helper(index-1).setNext(n);
+        helper(index+1).setPrev(n);
+        size++;
       }
     }
   }
   
-  // private Node helper(int index){
-  //   int answer = 0; 
-  //   if (index<0||index>size){
-  //     throw new IndexOutOfBoundsException();
-  //   }
-  //   Node current = start;
-  //   //String answer = "";
-  //   for (int i = 0; i < size; i++){
-  //     //answer = current.getData();
-  //     current = current.getNext();
-  //     if (i == index){
-  //       return current;
-  //     }
-  //   }
-  //   return current;
-  // }
+  private Node helper(int index){
+    if (index<0||index>size){
+      throw new IndexOutOfBoundsException();
+    }
+    Node current = start;
+    //String answer = "";
+    for (int i = 0; i < size; i++){
+      //answer = current.getData();
+      if (i == index){
+        return current;
+      }
+      current = current.getNext();
+    }
+    return current;
+  }
   
-  // public Node helper2(int index){
-  //   return(helper(index));
-  // }
+  public Node helper2(int index){
+    return(helper(index));
+  }
   
   
   public String get(int index){
