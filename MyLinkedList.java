@@ -65,13 +65,13 @@ public class MyLinkedList{
     return current;
   }
   
-  public Node helper2(int index){
-    return(helper(index));
-  }
+  // public Node helper2(int index){
+  //   return(helper(index));
+  // }
   
   
   public String get(int index){
-    if (index<0||index>size){
+    if (index<0||index>=size){
       throw new IndexOutOfBoundsException();
     }
     Node current = start;
@@ -84,7 +84,24 @@ public class MyLinkedList{
     return current.getData();
   }
   
-  // public String set(int index, String value);
+  public String set(int index, String value){
+    Node n = new Node(value);
+    String temp = "";
+    if (index<0||index>size){
+      throw new IndexOutOfBoundsException();
+    }
+    if (index == size){
+      end.setData(value);
+    }else{
+      if (index == 0){
+        start.setData(value);
+      }else{
+        temp = get(index);
+        helper(index).setData(value);
+      }
+    }
+    return temp;
+  }
   
   public String toString(){
     String answer = "";
