@@ -123,5 +123,38 @@ public class MyLinkedList{
     }
     return answer.substring(0,answer.length()-2);
   }
+  
+  public String remove(int index){
+    String temp = "";
+    if (index<0||index>=size){
+      throw new IndexOutOfBoundsException();
+    }
+    if (size == 1){
+      return "";
+    }
+    if (index==size-1){
+      temp = end.getData();
+      helper(size-2).setNext(null);
+      size--;
+    }else{
+      if (index == 0){
+        temp = start.getData();
+        start = helper(1);
+        start.setPrev(null);
+        size--;
+      }else{
+        helper(index+1).setPrev(helper(index-1));
+        helper(index-1).setNext(helper(index+1));
+        size--;
+      }
+    }
+    return temp;
+  }
+  
+  public void extend(MyLinkedList other){
+    while(!(other.get(0).equals(null))){
+      add(other.get(0));
+    }
+  }
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
