@@ -106,22 +106,28 @@ public class MyLinkedList{
   public String toString(){
     String answer = "";
     Node current = start;
+    if (size == 0){
+      return "[]";
+    }
     for (int i = 0; i < size-1; i++){
       answer+=current.getData()+", ";
       current = current.getNext();
     }
     answer+=current.getData();
-    return answer;
+    return "["+answer+"]";
   }
   
   public String toStringReversed(){
     String answer = "";
     Node current = start;
+    if (size == 0){
+      return "[]";
+    }
     for (int i = 0; i < size; i++){
       answer=current.getData()+", "+answer;
       current = current.getNext();
     }
-    return answer.substring(0,answer.length()-2);
+    return "["+answer.substring(0,answer.length()-2)+"]";
   }
   
   public String remove(int index){
@@ -130,6 +136,10 @@ public class MyLinkedList{
       throw new IndexOutOfBoundsException();
     }
     if (size == 1){
+      start.setData(null);
+      start.setNext(null);
+      end = start;
+      size--;
       return "";
     }
     if (index==size-1){
@@ -152,9 +162,15 @@ public class MyLinkedList{
   }
   
   public void extend(MyLinkedList other){
-    while(!(other.get(0).equals(null))){
-      add(other.get(0));
+    while(true){
+      try{
+        add(other.get(0));
+        other.remove(0);
+      }catch(IndexOutOfBoundsException e){
+        break;
+      }  
     }
+    //other.set()
   }
   //Any helper method that returns a Node object MUST BE PRIVATE!
 }
