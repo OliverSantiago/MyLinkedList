@@ -107,27 +107,27 @@ public class MyLinkedList{
     String answer = "";
     Node current = start;
     if (size == 0){
-      return "[]";
+      return "";
     }
     for (int i = 0; i < size-1; i++){
       answer+=current.getData()+", ";
       current = current.getNext();
     }
     answer+=current.getData();
-    return "["+answer+"]";
+    return answer;
   }
   
   public String toStringReversed(){
     String answer = "";
     Node current = start;
     if (size == 0){
-      return "[]";
+      return "";
     }
     for (int i = 0; i < size; i++){
       answer=current.getData()+", "+answer;
       current = current.getNext();
     }
-    return "["+answer.substring(0,answer.length()-2)+"]";
+    return answer.substring(0,answer.length()-2);
   }
   
   public String remove(int index){
